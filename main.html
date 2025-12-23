@@ -1,0 +1,2940 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Технологическое будущее России 2040</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+        }
+
+        :root {
+            --primary-blue: #0066ff;
+            --secondary-blue: #0044cc;
+            --tech-green: #00ffaa;
+            --tech-purple: #9d4edd;
+            --tech-gold: #ffd700;
+            --tech-red: #ff3366;
+            --tech-cyan: #00f7ff;
+            --tech-orange: #ff9900;
+            --tech-pink: #ff00ff;
+            --dark-bg: #0a0a1a;
+            --darker-bg: #050510;
+            --card-bg: rgba(20, 25, 60, 0.7);
+            --glow-blue: rgba(0, 102, 255, 0.3);
+            --glow-green: rgba(0, 255, 170, 0.3);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            background-color: var(--darker-bg);
+            color: white;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            min-height: 100vh;
+        }
+
+        /* Футуристический фон */
+        .futuristic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-grid {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background-image: 
+                linear-gradient(rgba(0, 102, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 102, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            transform: rotateX(60deg);
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: radial-gradient(circle, var(--tech-green) 0%, transparent 70%);
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            right: 15%;
+            background: radial-gradient(circle, var(--tech-purple) 0%, transparent 70%);
+            animation-delay: 5s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            bottom: 20%;
+            left: 20%;
+            background: radial-gradient(circle, var(--primary-blue) 0%, transparent 70%);
+            animation-delay: 10s;
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Навигация */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 26, 0.9);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 102, 255, 0.3);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--tech-green), var(--primary-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--tech-green), var(--primary-blue));
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--tech-green);
+        }
+
+        .nav-links a:hover::before {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--tech-green);
+        }
+
+        /* Герой секция */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem 2rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(90deg, var(--tech-green), var(--primary-blue), var(--tech-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: textGlow 3s ease-in-out infinite alternate;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 3rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            line-height: 1.6;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin: 4rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--tech-green), var(--primary-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 0.5rem;
+        }
+
+        /* Секции */
+        .section {
+            padding: 8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            margin-bottom: 5rem;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--tech-green), transparent);
+        }
+
+        /* Карточки направлений */
+        .tech-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .tech-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 102, 255, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 170, 0.1), transparent);
+            transition: var(--transition);
+        }
+
+        .tech-card:hover::before {
+            left: 100%;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 102, 255, 0.2);
+            border-color: var(--tech-green);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card-icon {
+            font-size: 3.5rem;
+            color: var(--tech-green);
+            background: rgba(0, 255, 170, 0.1);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+        }
+
+        .card-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .card-subtitle {
+            color: var(--tech-green);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.8s ease;
+        }
+
+        .tech-card.active .card-content {
+            max-height: 2000px;
+        }
+
+        .timeline {
+            margin: 2rem 0;
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--tech-green);
+        }
+
+        .timeline-item {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '▶';
+            position: absolute;
+            left: -1.8rem;
+            color: var(--tech-green);
+            font-size: 1.2rem;
+        }
+
+        .tech-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .tech-stat {
+            background: rgba(0, 102, 255, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--tech-green);
+        }
+
+        /* ИНТЕРАКТИВНАЯ КАРТА РОССИИ - ФИНАЛЬНАЯ ВЕРСИЯ */
+        .future-map-container {
+            position: relative;
+            width: 100%;
+            height: 700px;
+            background: 
+                linear-gradient(135deg, rgba(10, 15, 40, 0.9), rgba(5, 10, 30, 0.95)),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600"><path fill="rgba(20, 40, 80, 0.1)" d="M150,100 Q250,50 350,100 Q450,150 550,120 Q650,100 750,150 Q850,200 900,250 Q950,300 900,400 Q850,500 750,550 Q650,600 550,580 Q450,560 350,500 Q250,440 150,400 Q50,360 50,250 Q50,140 150,100 Z"/></svg>') no-repeat center;
+            background-size: contain, 90%;
+            border-radius: 25px;
+            overflow: hidden;
+            margin: 4rem 0;
+            border: 3px solid rgba(0, 102, 255, 0.3);
+            box-shadow: 
+                0 20px 60px rgba(0, 102, 255, 0.2),
+                inset 0 0 100px rgba(0, 255, 170, 0.05);
+        }
+
+        .tech-hub {
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            z-index: 10;
+            animation: hubPulse 3s infinite;
+            backdrop-filter: blur(10px);
+            border: 2px solid;
+            padding: 8px;
+            transform-origin: center;
+        }
+
+        .tech-hub:hover {
+            transform: scale(1.4);
+            z-index: 100;
+            box-shadow: 0 0 50px currentColor;
+        }
+
+        .hub-ai {
+            top: 35%;
+            left: 35%;
+            background: radial-gradient(circle at 30% 30%, rgba(0, 102, 255, 0.4), transparent 70%);
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
+
+        .hub-quantum {
+            top: 50%;
+            left: 60%;
+            background: radial-gradient(circle at 30% 30%, rgba(157, 78, 221, 0.4), transparent 70%);
+            border-color: var(--tech-purple);
+            color: var(--tech-purple);
+        }
+
+        .hub-space {
+            top: 60%;
+            left: 85%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 51, 102, 0.4), transparent 70%);
+            border-color: var(--tech-red);
+            color: var(--tech-red);
+        }
+
+        .hub-energy {
+            top: 20%;
+            left: 80%;
+            background: radial-gradient(circle at 30% 30%, rgba(0, 247, 255, 0.4), transparent 70%);
+            border-color: var(--tech-cyan);
+            color: var(--tech-cyan);
+        }
+
+        .hub-bio {
+            top: 60%;
+            left: 40%;
+            background: radial-gradient(circle at 30% 30%, rgba(0, 255, 170, 0.4), transparent 70%);
+            border-color: var(--tech-green);
+            color: var(--tech-green);
+        }
+
+        .hub-neuro {
+            top: 45%;
+            left: 25%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.4), transparent 70%);
+            border-color: var(--tech-gold);
+            color: var(--tech-gold);
+        }
+
+        .hub-icon {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .hub-label {
+            text-shadow: 0 0 10px currentColor;
+            line-height: 1.2;
+        }
+
+        /* ПОЛНОЭКРАННАЯ ПАНЕЛЬ ХАБА */
+        .hub-fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 5, 16, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 2000;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .hub-fullscreen.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .hub-fullscreen-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: linear-gradient(145deg, rgba(20, 25, 60, 0.9), rgba(10, 15, 40, 0.9));
+            border-radius: 25px;
+            border: 3px solid;
+            position: relative;
+        }
+
+        .close-hub-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--tech-green);
+            border-radius: 50%;
+            color: var(--tech-green);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-hub-btn:hover {
+            background: var(--tech-green);
+            color: var(--dark-bg);
+            transform: rotate(90deg);
+        }
+
+        .hub-fullscreen-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid;
+        }
+
+        .hub-fullscreen-icon {
+            font-size: 4rem;
+        }
+
+        .hub-fullscreen-title {
+            font-size: 3rem;
+            font-weight: 800;
+        }
+
+        .hub-fullscreen-subtitle {
+            font-size: 1.5rem;
+            color: var(--tech-green);
+            margin-top: 0.5rem;
+        }
+
+        .hub-fullscreen-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .hub-stat {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hub-stat-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .hub-stat-label {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .hub-projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .hub-project-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .hub-project-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--tech-green);
+            background: rgba(0, 255, 170, 0.1);
+        }
+
+        .hub-project-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--tech-green);
+        }
+
+        .connection-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--tech-green), transparent);
+            transform-origin: left center;
+            z-index: 5;
+            opacity: 0.4;
+            animation: lineFlow 4s linear infinite;
+        }
+
+        .connection-node {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--tech-green);
+            border-radius: 50%;
+            animation: nodePulse 2s infinite;
+        }
+
+        .map-controls {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .map-btn {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 102, 255, 0.2);
+            border: 2px solid var(--primary-blue);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .map-btn:hover {
+            background: var(--primary-blue);
+            transform: scale(1.1);
+        }
+
+        .region-info-panel {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 350px;
+            background: rgba(10, 10, 26, 0.95);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 2px solid var(--tech-green);
+            backdrop-filter: blur(20px);
+            display: none;
+            z-index: 200;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .info-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-icon {
+            font-size: 2.5rem;
+            color: var(--tech-green);
+        }
+
+        .info-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .info-subtitle {
+            color: var(--tech-green);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-stat {
+            background: rgba(0, 102, 255, 0.1);
+            padding: 0.8rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .info-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--tech-green);
+        }
+
+        .info-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .info-projects {
+            margin-top: 1.5rem;
+        }
+
+        .project-tag {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            background: rgba(0, 255, 170, 0.1);
+            color: var(--tech-green);
+            border-radius: 20px;
+            margin: 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        .map-legend {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(10, 10, 26, 0.9);
+            border-radius: 10px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 102, 255, 0.3);
+            z-index: 50;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .legend-color {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            border: 2px solid;
+        }
+
+        .legend-text {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .map-timeline {
+            position: absolute;
+            bottom: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 2rem;
+            background: rgba(10, 10, 26, 0.9);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 102, 255, 0.3);
+            z-index: 50;
+        }
+
+        .timeline-year {
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            background: rgba(0, 102, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .timeline-year:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .timeline-year.active {
+            background: var(--tech-green);
+            color: var(--dark-bg);
+            box-shadow: 0 0 20px rgba(0, 255, 170, 0.5);
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                transparent 0%, 
+                rgba(0, 102, 255, 0.05) 25%, 
+                rgba(0, 255, 170, 0.05) 50%, 
+                rgba(157, 78, 221, 0.05) 75%, 
+                transparent 100%);
+            animation: overlayMove 10s linear infinite;
+            pointer-events: none;
+        }
+
+        /* НОВЫЕ КАРТОЧКИ С ИЗОБРАЖЕНИЯМИ */
+        .image-card {
+            background: linear-gradient(145deg, rgba(20, 25, 60, 0.8), rgba(10, 15, 40, 0.8));
+            border-radius: 20px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 102, 255, 0.2);
+            height: 100%;
+        }
+
+        .image-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 102, 255, 0.3);
+            border-color: var(--tech-green);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--tech-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .card-text {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        /* Галерея проектов */
+        .projects-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .project-item {
+            background: linear-gradient(145deg, rgba(20, 25, 60, 0.8), rgba(10, 15, 40, 0.8));
+            border-radius: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 102, 255, 0.2);
+        }
+
+        .project-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 102, 255, 0.3);
+            border-color: var(--tech-green);
+        }
+
+        .project-header {
+            padding: 2rem;
+            background: linear-gradient(90deg, var(--primary-blue), var(--tech-purple));
+            text-align: center;
+        }
+
+        .project-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-body {
+            padding: 2rem;
+        }
+
+        .project-status {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(0, 255, 170, 0.2);
+            color: var(--tech-green);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Форма обратной связи */
+        .contact-section {
+            background: linear-gradient(135deg, rgba(20, 25, 60, 0.8), rgba(10, 15, 40, 0.8));
+            border-radius: 30px;
+            padding: 5rem;
+            margin-top: 4rem;
+            border: 2px solid rgba(0, 102, 255, 0.3);
+        }
+
+        .idea-form {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: var(--tech-green);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1.2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 102, 255, 0.3);
+            border-radius: 10px;
+            color: white;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--tech-green);
+            box-shadow: 0 0 20px rgba(0, 255, 170, 0.2);
+        }
+
+        .form-textarea {
+            min-height: 200px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(90deg, var(--tech-green), var(--primary-blue));
+            color: white;
+            border: none;
+            padding: 1.5rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: block;
+            margin: 3rem auto 0;
+            min-width: 250px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 255, 170, 0.3);
+        }
+
+        /* Футер */
+        footer {
+            background: rgba(5, 5, 16, 0.95);
+            padding: 5rem 2rem;
+            margin-top: 8rem;
+            border-top: 2px solid rgba(0, 102, 255, 0.3);
+        }
+
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 4rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--tech-green);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 102, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--tech-green);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--tech-green);
+            color: var(--dark-bg);
+            transform: translateY(-5px);
+        }
+
+        /* Кнопки управления */
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .action-btn {
+            padding: 1rem 2rem;
+            background: rgba(0, 102, 255, 0.2);
+            border: 2px solid var(--primary-blue);
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .action-btn:hover {
+            background: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        /* Новые стили для доп. контента */
+        .info-box {
+            background: linear-gradient(135deg, rgba(20, 25, 60, 0.8), rgba(10, 15, 40, 0.8));
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            border: 2px solid rgba(0, 102, 255, 0.3);
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            background: rgba(0, 102, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            transition: var(--transition);
+        }
+
+        .feature-item:hover {
+            background: rgba(0, 102, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--tech-green);
+            margin-bottom: 1rem;
+        }
+
+        /* Анимации */
+        @keyframes gridMove {
+            0% { transform: rotateX(60deg) translateY(0); }
+            100% { transform: rotateX(60deg) translateY(50px); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 20px rgba(0, 255, 170, 0.3); }
+            100% { text-shadow: 0 0 40px rgba(0, 102, 255, 0.5); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes hubPulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 0 0 0 currentColor;
+            }
+            50% { 
+                transform: scale(1.2);
+                box-shadow: 0 0 0 15px transparent;
+            }
+        }
+
+        @keyframes lineFlow {
+            0% { background-position: -100% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        @keyframes nodePulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.5); opacity: 1; }
+        }
+
+        @keyframes overlayMove {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 1200px) {
+            .hero h1 { font-size: 4rem; }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+            .future-map-container { height: 600px; }
+            .region-info-panel { width: 300px; }
+            .tech-cards { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+            .hub-fullscreen-stats { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 1rem; }
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 26, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+            }
+            .nav-links.active { display: flex; }
+            .mobile-menu-btn { display: block; }
+            .hero h1 { font-size: 2.8rem; }
+            .hero-subtitle { font-size: 1.4rem; }
+            .section { padding: 4rem 1rem; }
+            .section-title { font-size: 2.5rem; }
+            .form-row { grid-template-columns: 1fr; }
+            .stats-container { gap: 2rem; }
+            .stat-number { font-size: 2.5rem; }
+            .contact-section { padding: 2rem; }
+            .future-map-container { height: 500px; }
+            .tech-hub { width: 70px; height: 70px; font-size: 0.7rem; }
+            .hub-icon { font-size: 1.4rem; }
+            .region-info-panel { 
+                width: 90%; 
+                left: 5%; 
+                top: 10px;
+                padding: 1rem;
+            }
+            .map-legend, .map-timeline { display: none; }
+            .map-controls { bottom: 10px; right: 10px; }
+            .image-grid, .projects-showcase { grid-template-columns: 1fr; }
+            .feature-list { grid-template-columns: 1fr; }
+            .hub-fullscreen-stats { grid-template-columns: 1fr; }
+            .hub-fullscreen-title { font-size: 2rem; }
+            .hub-fullscreen-icon { font-size: 3rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Футуристический фон -->
+    <div class="futuristic-bg">
+        <div class="bg-grid"></div>
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <!-- Полноэкранная панель хаба -->
+    <div class="hub-fullscreen" id="hubFullscreen">
+        <div class="hub-fullscreen-content" id="hubFullscreenContent">
+            <button class="close-hub-btn" onclick="closeHubFullscreen()">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="hub-fullscreen-header" id="hubFullscreenHeader">
+                <div class="hub-fullscreen-icon" id="hubFullscreenIcon"></div>
+                <div>
+                    <h2 class="hub-fullscreen-title" id="hubFullscreenTitle"></h2>
+                    <p class="hub-fullscreen-subtitle" id="hubFullscreenSubtitle"></p>
+                </div>
+            </div>
+            
+            <div class="hub-fullscreen-description" id="hubFullscreenDescription"></div>
+            
+            <div class="hub-fullscreen-stats" id="hubFullscreenStats"></div>
+            
+            <h3 style="margin: 2rem 0 1rem; color: var(--tech-green);">Ключевые проекты:</h3>
+            <div class="hub-projects-grid" id="hubProjectsGrid"></div>
+        </div>
+    </div>
+
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="logo">Россия 2040</div>
+        <div class="nav-links" id="navLinks">
+            <a href="#hero">Главная</a>
+            <a href="#vision">Видение</a>
+            <a href="#tech">Технологии</a>
+            <a href="#projects">Проекты</a>
+            <a href="#innovations">Инновации</a>
+            <a href="#contact">Идеи</a>
+        </div>
+        <div class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Герой секция -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>РОССИЯ 2040:<br>ТЕХНОЛОГИЧЕСКАЯ СВЕРХДЕРЖАВА</h1>
+            <p class="hero-subtitle">
+                Страна, где искусственный интеллект создает новые лекарства, квантовые компьютеры решают глобальные проблемы, 
+                а космические технологии открывают путь к звездам. Добро пожаловать в будущее, которое мы строим сегодня.
+            </p>
+            
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">+40%</div>
+                    <div class="stat-label">Рост ВВП от технологий</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">2.5M</div>
+                    <div class="stat-label">Новых рабочих мест в IT</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">85%</div>
+                    <div class="stat-label">Зеленой энергии к 2040</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">#3</div>
+                    <div class="stat-label">В мире по инновациям</div>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="action-btn" onclick="scrollToSection('tech')">
+                    <i class="fas fa-rocket"></i> Исследовать технологии
+                </button>
+                <button class="action-btn" onclick="showDemo()">
+                    <i class="fas fa-play"></i> 3D демо
+                </button>
+                <button class="action-btn" onclick="shareSite()">
+                    <i class="fas fa-share-alt"></i> Поделиться
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Видение будущего с красивой картой -->
+    <section class="section" id="vision">
+        <h2 class="section-title">ВИДЕНИЕ БУДУЩЕГО</h2>
+        
+        <!-- Интерактивная карта -->
+        <div class="future-map-container" id="futureMap">
+            <!-- Технологические хабы -->
+            <div class="tech-hub hub-ai" data-hub="ai">
+                <div class="hub-icon"><i class="fas fa-brain"></i></div>
+                <div class="hub-label">Москва<br>Столица ИИ</div>
+            </div>
+            
+            <div class="tech-hub hub-quantum" data-hub="quantum">
+                <div class="hub-icon"><i class="fas fa-atom"></i></div>
+                <div class="hub-label">Новосибирск<br>Квантовый хаб</div>
+            </div>
+            
+            <div class="tech-hub hub-space" data-hub="space">
+                <div class="hub-icon"><i class="fas fa-rocket"></i></div>
+                <div class="hub-label">Владивосток<br>Космические ворота</div>
+            </div>
+            
+            <div class="tech-hub hub-energy" data-hub="energy">
+                <div class="hub-icon"><i class="fas fa-solar-panel"></i></div>
+                <div class="hub-label">Мурманск<br>Зеленая энергия</div>
+            </div>
+            
+            <div class="tech-hub hub-bio" data-hub="bio">
+                <div class="hub-icon"><i class="fas fa-dna"></i></div>
+                <div class="hub-label">Екатеринбург<br>Биотехнологии</div>
+            </div>
+            
+            <div class="tech-hub hub-neuro" data-hub="neuro">
+                <div class="hub-icon"><i class="fas fa-mind"></i></div>
+                <div class="hub-label">Санкт-Петербург<br>Нейротехнологии</div>
+            </div>
+
+            <!-- Соединительные линии -->
+            <div class="connection-line" id="line1"></div>
+            <div class="connection-line" id="line2"></div>
+            <div class="connection-line" id="line3"></div>
+            <div class="connection-line" id="line4"></div>
+            <div class="connection-line" id="line5"></div>
+
+            <!-- Узлы соединений -->
+            <div class="connection-node" id="node1"></div>
+            <div class="connection-node" id="node2"></div>
+            <div class="connection-node" id="node3"></div>
+            <div class="connection-node" id="node4"></div>
+            <div class="connection-node" id="node5"></div>
+
+            <!-- Панель информации -->
+            <div class="region-info-panel" id="regionInfo">
+                <div class="info-header">
+                    <div class="info-icon" id="infoIcon"></div>
+                    <div>
+                        <h3 class="info-title" id="infoTitle">Выберите хаб</h3>
+                        <p class="info-subtitle" id="infoSubtitle">Нажмите на любой технологический хаб</p>
+                    </div>
+                </div>
+                
+                <div id="infoDescription">
+                    <p>Каждый регион России специализируется на определенных технологиях будущего, создавая синергию инноваций.</p>
+                </div>
+                
+                <div class="info-stats" id="infoStats">
+                    <!-- Статистика будет заполняться динамически -->
+                </div>
+                
+                <div class="info-projects" id="infoProjects">
+                    <h4>Ключевые проекты:</h4>
+                    <div id="projectTags"></div>
+                </div>
+                
+                <button class="map-btn" style="margin-top: 1rem; width: 100%;" onclick="closeInfoPanel()">
+                    <i class="fas fa-times"></i> Закрыть
+                </button>
+            </div>
+
+            <!-- Легенда карты -->
+            <div class="map-legend">
+                <h4 style="margin-bottom: 1rem; color: var(--tech-green);">Легенда:</h4>
+                <div class="legend-item">
+                    <div class="legend-color" style="border-color: var(--primary-blue); background: rgba(0, 102, 255, 0.2);"></div>
+                    <div class="legend-text">Искусственный интеллект</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="border-color: var(--tech-purple); background: rgba(157, 78, 221, 0.2);"></div>
+                    <div class="legend-text">Квантовые технологии</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="border-color: var(--tech-green); background: rgba(0, 255, 170, 0.2);"></div>
+                    <div class="legend-text">Биотехнологии</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="border-color: var(--tech-cyan); background: rgba(0, 247, 255, 0.2);"></div>
+                    <div class="legend-text">Зеленая энергетика</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="border-color: var(--tech-red); background: rgba(255, 51, 102, 0.2);"></div>
+                    <div class="legend-text">Космические технологии</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="border-color: var(--tech-gold); background: rgba(255, 215, 0, 0.2);"></div>
+                    <div class="legend-text">Нейротехнологии</div>
+                </div>
+            </div>
+
+            <!-- Таймлайн -->
+            <div class="map-timeline">
+                <div class="timeline-year active" data-year="2025">2025</div>
+                <div class="timeline-year" data-year="2030">2030</div>
+                <div class="timeline-year" data-year="2035">2035</div>
+                <div class="timeline-year" data-year="2040">2040</div>
+            </div>
+
+            <!-- Управление картой -->
+            <div class="map-controls">
+                <button class="map-btn" onclick="zoomIn()">
+                    <i class="fas fa-search-plus"></i>
+                </button>
+                <button class="map-btn" onclick="zoomOut()">
+                    <i class="fas fa-search-minus"></i>
+                </button>
+                <button class="map-btn" onclick="resetView()">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+                <button class="map-btn" onclick="toggleConnections()">
+                    <i class="fas fa-project-diagram"></i>
+                </button>
+            </div>
+
+            <!-- Анимированный оверлей -->
+            <div class="map-overlay"></div>
+        </div>
+
+        <!-- Описание карты -->
+        <div style="max-width: 800px; margin: 3rem auto; text-align: center;">
+            <h3 style="color: var(--tech-green); margin-bottom: 1.5rem; font-size: 2rem;">Стратегическая карта технологического развития</h3>
+            <p style="font-size: 1.2rem; line-height: 1.6; color: rgba(255, 255, 255, 0.9);">
+                Карта демонстрирует распределение технологических хабов по территории России. Каждый регион специализируется 
+                на определенных направлениях, создавая уникальную экосистему инноваций. Соединительные линии показывают 
+                технологические коридоры и потоки данных между хабами.
+            </p>
+            
+            <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 3rem; flex-wrap: wrap;">
+                <button class="action-btn" onclick="showAllHubs()">
+                    <i class="fas fa-eye"></i> Показать все хабы
+                </button>
+                <button class="action-btn" onclick="animateConnections()">
+                    <i class="fas fa-bolt"></i> Анимировать связи
+                </button>
+                <button class="action-btn" onclick="downloadMap()">
+                    <i class="fas fa-download"></i> Скачать карту
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Технологии будущего -->
+    <section class="section" id="tech">
+        <h2 class="section-title">ТЕХНОЛОГИИ БУДУЩЕГО</h2>
+        
+        <div class="tech-cards">
+            <!-- ИИ -->
+            <div class="tech-card" onclick="toggleTechCard(this)">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div>
+                        <div class="card-title">Искусственный интеллект</div>
+                        <div class="card-subtitle">Когнитивная революция 2030-2040</div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p><strong>Стратегическая цель:</strong> Создание национальной экосистемы ИИ, которая станет драйвером экономического роста и социального прогресса.</p>
+                    
+                    <div class="tech-stats">
+                        <div class="tech-stat">
+                            <div class="stat-value">$150 млрд</div>
+                            <div>Вклад в ВВП к 2035</div>
+                        </div>
+                        <div class="tech-stat">
+                            <div class="stat-value">500K</div>
+                            <div>Специалистов ИИ</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <strong>2025:</strong> Запуск федеральной платформы "ИИ-Наука" для исследований
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2030:</strong> ИИ-ассистенты в 90% школ и вузов
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2035:</strong> Полная автоматизация госуслуг через ИИ
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2040:</strong> ИИ-системы предсказания и предотвращения кризисов
+                        </div>
+                    </div>
+                    
+                    <h4>Ключевые проекты:</h4>
+                    <ul>
+                        <li><strong>"Цифровой двойник России"</strong> - полная цифровая копия страны для моделирования</li>
+                        <li><strong>"ИИ-Доктор"</strong> - система диагностики с точностью 99.8%</li>
+                        <li><strong>"Когнитивный помощник"</strong> - персональный ИИ для каждого гражданина</li>
+                        <li><strong>"ИИ-Транспорт"</strong> - полностью автономная транспортная система</li>
+                    </ul>
+                    
+                    <button class="action-btn" style="margin-top: 1rem;" onclick="showAIDemo()">
+                        <i class="fas fa-robot"></i> Демо ИИ-помощника
+                    </button>
+                </div>
+            </div>
+
+            <!-- Квантовые технологии -->
+            <div class="tech-card" onclick="toggleTechCard(this)">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <div>
+                        <div class="card-title">Квантовые вычисления</div>
+                        <div class="card-subtitle">Квантовый прорыв 2025-2035</div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p><strong>Стратегическая цель:</strong> Создание квантового суперкомпьютера мощностью 1000+ кубитов и коммерциализация квантовых технологий.</p>
+                    
+                    <div class="tech-stats">
+                        <div class="tech-stat">
+                            <div class="stat-value">1000+</div>
+                            <div>Стабильных кубитов к 2030</div>
+                        </div>
+                        <div class="tech-stat">
+                            <div class="stat-value">$50 млрд</div>
+                            <div>Объем рынка к 2040</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <strong>2025:</strong> Запуск первого российского 100-кубитного процессора
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2028:</strong> Квантовый интернет между Москвой и Новосибирском
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2032:</strong> Квантовые симуляции для разработки лекарств
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2035:</strong> Квантовое превосходство в криптографии
+                        </div>
+                    </div>
+                    
+                    <h4>Применение:</h4>
+                    <ul>
+                        <li>Моделирование новых материалов и лекарств</li>
+                        <li>Взломозащищенные коммуникации</li>
+                        <li>Оптимизация логистики и энергосистем</li>
+                        <li>Искусственный интеллект нового поколения</li>
+                        <li>Квантовое машинное обучение</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Зеленая энергетика -->
+            <div class="tech-card" onclick="toggleTechCard(this)">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-solar-panel"></i>
+                    </div>
+                    <div>
+                        <div class="card-title">Зеленая энергетика</div>
+                        <div class="card-subtitle">Энергетическая революция 2030-2040</div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p><strong>Стратегическая цель:</strong> Достижение 85% возобновляемой энергии в энергобалансе страны к 2040 году.</p>
+                    
+                    <div class="tech-stats">
+                        <div class="tech-stat">
+                            <div class="stat-value">85%</div>
+                            <div>Зеленой энергии к 2040</div>
+                        </div>
+                        <div class="tech-stat">
+                            <div class="stat-value">-60%</div>
+                            <div>Выбросов CO₂ к 2040</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <strong>2025:</strong> Запуск первой плавучей солнечной электростанции на Волге
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2030:</strong> Арктические ветропарки мощностью 10 ГВт
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2035:</strong> Водородные поезда на всех магистралях
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2040:</strong> Полный переход на зеленую энергетику
+                        </div>
+                    </div>
+                    
+                    <h4>Ключевые проекты:</h4>
+                    <ul>
+                        <li><strong>"Арктический ветер"</strong> - крупнейшие в мире ветропарки</li>
+                        <li><strong>"Сибирский водород"</strong> - производство зеленого водорода</li>
+                        <li><strong>"Умная сеть"</strong> - интеллектуальное распределение энергии</li>
+                        <li><strong>"Термоядерный реактор"</strong> - чистая энергия будущего</li>
+                    </ul>
+                    
+                    <button class="action-btn" style="margin-top: 1rem;" onclick="showEnergyCalculator()">
+                        <i class="fas fa-calculator"></i> Калькулятор энергии
+                    </button>
+                </div>
+            </div>
+
+            <!-- Космические технологии -->
+            <div class="tech-card" onclick="toggleTechCard(this)">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div>
+                        <div class="card-title">Космические технологии</div>
+                        <div class="card-subtitle">Космическая экспансия 2030-2050</div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p><strong>Стратегическая цель:</strong> Постоянное присутствие на Луне, миссия на Марс, коммерциализация космоса.</p>
+                    
+                    <div class="tech-stats">
+                        <div class="tech-stat">
+                            <div class="stat-value">$100 млрд</div>
+                            <div>Объем космической экономики</div>
+                        </div>
+                        <div class="tech-stat">
+                            <div class="stat-value">10K</div>
+                            <div>Космических туристов в год</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <strong>2025:</strong> Запуск новой орбитальной станции
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2030:</strong> Первая российская база на Луне
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2035:</strong> Пилотируемая миссия на Марс
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2040:</strong> Космическая добыча полезных ископаемых
+                        </div>
+                    </div>
+                    
+                    <h4>Ключевые проекты:</h4>
+                    <ul>
+                        <li><strong>"Луна-25"</strong> - первая в мире постоянная лунная база</li>
+                        <li><strong>"Марс-Грунт"</strong> - возвращение образцов с Марса</li>
+                        <li><strong>"Орбитальный город"</strong> - космическая станция для туризма</li>
+                        <li><strong>"Солнечный парус"</strong> - межзвездные миссии</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Биотехнологии -->
+            <div class="tech-card" onclick="toggleTechCard(this)">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                    <div>
+                        <div class="card-title">Биотехнологии</div>
+                        <div class="card-subtitle">Биологическая революция 2025-2040</div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p><strong>Стратегическая цель:</strong> Увеличение продолжительности здоровой жизни до 100+ лет, победа над основными заболеваниями.</p>
+                    
+                    <div class="tech-stats">
+                        <div class="tech-stat">
+                            <div class="stat-value">100+</div>
+                            <div>Лет здоровой жизни</div>
+                        </div>
+                        <div class="tech-stat">
+                            <div class="stat-value">-80%</div>
+                            <div>Смертность от рака к 2040</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <strong>2025:</strong> Персонализированная медицина на основе генома
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2030:</strong> Искусственные органы из собственных клеток
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2035:</strong> Реверс старения на клеточном уровне
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2040:</strong> Полное излечение нейродегенеративных заболеваний
+                        </div>
+                    </div>
+                    
+                    <h4>Ключевые проекты:</h4>
+                    <ul>
+                        <li><strong>"Геном России"</strong> - секвенирование геномов всех граждан</li>
+                        <li><strong>"Бионический человек"</strong> - нейроинтерфейсы и протезы</li>
+                        <li><strong>"Фотосинтез 2.0"</strong> - искусственный фотосинтез для производства пищи</li>
+                        <li><strong>"Био-принтер"</strong> - печать органов по требованию</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Нейротехнологии -->
+            <div class="tech-card" onclick="toggleTechCard(this)">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-mind"></i>
+                    </div>
+                    <div>
+                        <div class="card-title">Нейротехнологии</div>
+                        <div class="card-subtitle">Нейрореволюция 2030-2040</div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p><strong>Стратегическая цель:</strong> Создание интерфейсов мозг-компьютер для лечения заболеваний и расширения возможностей человека.</p>
+                    
+                    <div class="tech-stats">
+                        <div class="tech-stat">
+                            <div class="stat-value">1M</div>
+                            <div>Нейроимплантов к 2040</div>
+                        </div>
+                        <div class="tech-stat">
+                            <div class="stat-value">10x</div>
+                            <div>Скорость обучения</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <strong>2025:</strong> Нейроинтерфейсы для парализованных пациентов
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2030:</strong> Прямая загрузка знаний в мозг
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2035:</strong> Коллективное мышление через нейросети
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2040:</strong> Цифровое бессмертие сознания
+                        </div>
+                    </div>
+                    
+                    <h4>Применение:</h4>
+                    <ul>
+                        <li>Лечение нейродегенеративных заболеваний</li>
+                        <li>Ускоренное обучение и запоминание</li>
+                        <li>Прямое управление устройствами силой мысли</li>
+                        <li>Восстановление утраченных чувств</li>
+                        <li>Совместное творчество через нейросети</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Робототехника -->
+            <div class="tech-card" onclick="toggleTechCard(this)">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div>
+                        <div class="card-title">Робототехника</div>
+                        <div class="card-subtitle">Роботизация 2025-2040</div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p><strong>Стратегическая цель:</strong> Полная автоматизация производства и создание роботов-компаньонов для каждого дома.</p>
+                    
+                    <div class="tech-stats">
+                        <div class="tech-stat">
+                            <div class="stat-value">5M</div>
+                            <div>Роботов в промышленности</div>
+                        </div>
+                        <div class="tech-stat">
+                            <div class="stat-value">90%</div>
+                            <div>Автоматизация производства</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <strong>2025:</strong> Роботы-хирурги в каждой больнице
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2030:</strong> Автономные роботы для сельского хозяйства
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2035:</strong> Роботы-компаньоны для пожилых людей
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2040:</strong> Гуманоидные роботы в каждом доме
+                        </div>
+                    </div>
+                    
+                    <h4>Применение:</h4>
+                    <ul>
+                        <li>Хирургия с нанометровой точностью</li>
+                        <li>Автономное сельское хозяйство</li>
+                        <li>Роботы-спасатели в ЧС</li>
+                        <li>Персональные роботы-помощники</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Нанотехнологии -->
+            <div class="tech-card" onclick="toggleTechCard(this)">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <div>
+                        <div class="card-title">Нанотехнологии</div>
+                        <div class="card-subtitle">Наномир 2030-2040</div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p><strong>Стратегическая цель:</strong> Создание наноматериалов и наноустройств для медицины, энергетики и промышленности.</p>
+                    
+                    <div class="tech-stats">
+                        <div class="tech-stat">
+                            <div class="stat-value">1 нм</div>
+                            <div>Точность производства</div>
+                        </div>
+                        <div class="tech-stat">
+                            <div class="stat-value">$200 млрд</div>
+                            <div>Объем рынка к 2040</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <strong>2025:</strong> Нанолекарства для точечной доставки
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2030:</strong> Нанороботы для очистки крови
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2035:</strong> Самовосстанавливающиеся материалы
+                        </div>
+                        <div class="timeline-item">
+                            <strong>2040:</strong> Нанопроизводство на атомном уровне
+                        </div>
+                    </div>
+                    
+                    <h4>Применение:</h4>
+                    <ul>
+                        <li>Точечная доставка лекарств в организм</li>
+                        <li>Самовосстанавливающиеся конструкции</li>
+                        <li>Сверхлегкие и сверхпрочные материалы</li>
+                        <li>Наносенсоры для мониторинга здоровья</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Новый раздел: Инновационные решения -->
+    <section class="section" id="innovations">
+        <h2 class="section-title">ИННОВАЦИОННЫЕ РЕШЕНИЯ</h2>
+        
+        <div class="info-box">
+            <h3 style="color: var(--tech-green); margin-bottom: 2rem; font-size: 2.5rem;">Преобразование жизни граждан</h3>
+            <p style="font-size: 1.2rem; line-height: 1.6; margin-bottom: 2rem;">
+                К 2040 году технологии кардинально изменят повседневную жизнь каждого гражданина России. 
+                От умных городов до персонализированной медицины - вот как будет выглядеть наше будущее:
+            </p>
+            
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-home"></i></div>
+                    <h4>Умные дома</h4>
+                    <p>Полностью автономные жилые пространства с ИИ-управлением, адаптирующиеся под потребности жильцов.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-heartbeat"></i></div>
+                    <h4>Персонализированная медицина</h4>
+                    <p>Лечение на основе генома, постоянный мониторинг здоровья и превентивная диагностика.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h4>Образование будущего</h4>
+                    <p>Виртуальные классы, адаптивные учебные программы и нейроинтерфейсы для ускоренного обучения.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-car"></i></div>
+                    <h4>Автономный транспорт</h4>
+                    <p>Беспилотные автомобили, летающие такси и гиперлуп между городами.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Карточки с изображениями -->
+        <div class="image-grid">
+            <div class="image-card">
+                <div class="card-image" style="background: linear-gradient(135deg, var(--primary-blue), var(--tech-purple));">
+                    <i class="fas fa-city"></i>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Умные города</h3>
+                    <p class="card-text">Полностью цифровые города с интеллектуальным управлением, автономным транспортом и экологичными решениями.</p>
+                    <button class="action-btn" style="width: 100%;" onclick="showCityDemo()">
+                        <i class="fas fa-eye"></i> Виртуальный тур
+                    </button>
+                </div>
+            </div>
+            
+            <div class="image-card">
+                <div class="card-image" style="background: linear-gradient(135deg, var(--tech-green), var(--tech-cyan));">
+                    <i class="fas fa-hospital"></i>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Медицина 4.0</h3>
+                    <p class="card-text">Роботы-хирурги, телемедицина, биопечать органов и генная терапия для лечения всех заболеваний.</p>
+                    <button class="action-btn" style="width: 100%;" onclick="showMedDemo()">
+                        <i class="fas fa-stethoscope"></i> Демо диагностики
+                    </button>
+                </div>
+            </div>
+            
+            <div class="image-card">
+                <div class="card-image" style="background: linear-gradient(135deg, var(--tech-red), var(--tech-orange));">
+                    <i class="fas fa-school"></i>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Образование</h3>
+                    <p class="card-text">Виртуальная и дополненная реальность в обучении, ИИ-тьюторы и персонализированные учебные траектории.</p>
+                    <button class="action-btn" style="width: 100%;" onclick="showEduDemo()">
+                        <i class="fas fa-vr-cardboard"></i> VR урок
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Инновационные проекты -->
+    <section class="section" id="projects">
+        <h2 class="section-title">ИННОВАЦИОННЫЕ ПРОЕКТЫ</h2>
+        
+        <div class="projects-showcase">
+            <div class="project-item">
+                <div class="project-header">
+                    <div class="project-icon">
+                        <i class="fas fa-city"></i>
+                    </div>
+                    <h3>Умный город 3.0</h3>
+                </div>
+                <div class="project-body">
+                    <span class="project-status">В разработке</span>
+                    <p>Автономный транспорт, умные здания, IoT-инфраструктура. Пилотный проект в Иннополисе.</p>
+                    <p><strong>Бюджет:</strong> $5 млрд</p>
+                    <p><strong>Срок:</strong> 2025-2030</p>
+                    <p><strong>Покрытие:</strong> 15 городов к 2035</p>
+                </div>
+            </div>
+            
+            <div class="project-item">
+                <div class="project-header">
+                    <div class="project-icon">
+                        <i class="fas fa-satellite"></i>
+                    </div>
+                    <h3>Сфера</h3>
+                </div>
+                <div class="project-body">
+                    <span class="project-status">Запущено</span>
+                    <p>Глобальная спутниковая система интернета. 100% покрытие территории России.</p>
+                    <p><strong>Спутников:</strong> 264</p>
+                    <p><strong>Скорость:</strong> 1 Гбит/с</p>
+                    <p><strong>Пользователей:</strong> 10 млн</p>
+                </div>
+            </div>
+            
+            <div class="project-item">
+                <div class="project-header">
+                    <div class="project-icon">
+                        <i class="fas fa-vial"></i>
+                    </div>
+                    <h3>Квантовый симулятор</h3>
+                </div>
+                <div class="project-body">
+                    <span class="project-status">Исследования</span>
+                    <p>Моделирование молекул для разработки новых лекарств и материалов.</p>
+                    <p><strong>Кубитов:</strong> 256</p>
+                    <p><strong>Точность:</strong> 99.9%</p>
+                    <p><strong>Применение:</strong> Фармацевтика, химия</p>
+                </div>
+            </div>
+            
+            <div class="project-item">
+                <div class="project-header">
+                    <div class="project-icon">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <h3>Арктический ветер</h3>
+                </div>
+                <div class="project-body">
+                    <span class="project-status">Строительство</span>
+                    <p>Плавучие ветряные электростанции в Арктике. Мощность 5 ГВт.</p>
+                    <p><strong>Турбин:</strong> 200</p>
+                    <p><strong>Энергия:</strong> 20 ТВтч/год</p>
+                    <p><strong>Регион:</strong> Баренцево море</p>
+                </div>
+            </div>
+            
+            <div class="project-item">
+                <div class="project-header">
+                    <div class="project-icon">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                    <h3>Геном России</h3>
+                </div>
+                <div class="project-body">
+                    <span class="project-status">Запущено</span>
+                    <p>Секвенирование геномов всех граждан для персонализированной медицины.</p>
+                    <p><strong>Обработано:</strong> 50 млн геномов</p>
+                    <p><strong>Точность:</strong> 99.99%</p>
+                    <p><strong>Срок:</strong> 2023-2030</p>
+                </div>
+            </div>
+            
+            <div class="project-item">
+                <div class="project-header">
+                    <div class="project-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Нейроинтерфейсы</h3>
+                </div>
+                <div class="project-body">
+                    <span class="project-status">Исследования</span>
+                    <p>Разработка интерфейсов мозг-компьютер для лечения неврологических заболеваний.</p>
+                    <p><strong>Точность:</strong> 95%</p>
+                    <p><strong>Применение:</strong> Медицина, образование</p>
+                    <p><strong>Срок:</strong> 2025-2035</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="action-buttons">
+            <button class="action-btn" onclick="filterProjects('all')">
+                <i class="fas fa-th"></i> Все проекты
+            </button>
+            <button class="action-btn" onclick="filterProjects('active')">
+                <i class="fas fa-play"></i> Активные
+            </button>
+            <button class="action-btn" onclick="filterProjects('future')">
+                <i class="fas fa-clock"></i> Планируемые
+            </button>
+            <button class="action-btn" onclick="showAllProjects()">
+                <i class="fas fa-expand"></i> Показать все
+            </button>
+        </div>
+    </section>
+
+    <!-- Форма обратной связи -->
+    <section class="section" id="contact">
+        <div class="contact-section">
+            <h2 class="section-title">ВАШИ ИДЕИ ДЛЯ БУДУЩЕГО</h2>
+            
+            <div class="idea-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="userName" class="form-label">Ваше имя</label>
+                        <input type="text" id="userName" class="form-input" placeholder="Иван Иванов">
+                    </div>
+                    <div class="form-group">
+                        <label for="userEmail" class="form-label">Email</label>
+                        <input type="email" id="userEmail" class="form-input" placeholder="ivan@example.com">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="userProfession" class="form-label">Ваша профессия/сфера</label>
+                    <input type="text" id="userProfession" class="form-input" placeholder="ИТ-специалист, студент, предприниматель...">
+                </div>
+                
+                <div class="form-group">
+                    <label for="ideaTitle" class="form-label">Название идеи</label>
+                    <input type="text" id="ideaTitle" class="form-input" placeholder="Например: Квантовый интернет для школ">
+                </div>
+                
+                <div class="form-group">
+                    <label for="ideaDescription" class="form-label">Описание идеи</label>
+                    <textarea id="ideaDescription" class="form-input form-textarea" 
+                              placeholder="Опишите вашу идею подробно. Какая проблема решается? Какие технологии используются? Какие будут результаты?"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="ideaCategory" class="form-label">Категория идеи</label>
+                    <select id="ideaCategory" class="form-input">
+                        <option value="">Выберите категорию</option>
+                        <option value="ai">Искусственный интеллект</option>
+                        <option value="quantum">Квантовые технологии</option>
+                        <option value="energy">Зеленая энергетика</option>
+                        <option value="space">Космические технологии</option>
+                        <option value="bio">Биотехнологии</option>
+                        <option value="neuro">Нейротехнологии</option>
+                        <option value="robot">Робототехника</option>
+                        <option value="nano">Нанотехнологии</option>
+                        <option value="education">Образование</option>
+                        <option value="transport">Транспорт</option>
+                        <option value="medicine">Медицина</option>
+                        <option value="other">Другое</option>
+                    </select>
+                </div>
+                
+                <button class="submit-btn pulse" onclick="submitIdea()">
+                    <i class="fas fa-paper-plane"></i> Отправить идею
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h3>Россия 2040</h3>
+                <p>Интерактивная презентация технологического будущего страны. Все проекты основаны на реальных разработках и стратегиях развития.</p>
+                <p><strong>Миссия:</strong> Сделать Россию технологическим лидером мира к 2040 году.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <p><i class="fas fa-envelope"></i> не шарю</p>
+                <p><i class="fas fa-phone"></i> Не знакомлюсь</p>
+                <p><i class="fas fa-map-marker-alt"></i>Инновационный центр "Сколково"</p>
+                <p><i class="fas fa-clock"></i> 24/7</p>
+                
+                <div class="social-links">
+                    <a href="#" class="social-link" onclick="shareTelegram()">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                    <a href="#" class="social-link" onclick="shareVK()">
+                        <i class="fab fa-vk"></i>
+                    </a>
+                    <a href="#" class="social-link" onclick="shareYouTube()">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="#" class="social-link" onclick="shareGitHub()">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Ресурсы</h3>
+                <p><a href="#" style="color: var(--tech-green); text-decoration: none;" onclick="downloadPresentation()"><i class="fas fa-download"></i> Скачать презентацию</a></p>
+                <p><a href="#" style="color: var(--tech-green); text-decoration: none;" onclick="showResearch()"><i class="fas fa-file-alt"></i> Исследования и отчеты</a></p>
+                <p><a href="#" style="color: var(--tech-green); text-decoration: none;" onclick="showPartners()"><i class="fas fa-handshake"></i> Партнеры проекта</a></p>
+                <p><a href="#" style="color: var(--tech-green); text-decoration: none;" onclick="showNews()"><i class="fas fa-newspaper"></i> Новости технологий</a></p>
+                <p><a href="#" style="color: var(--tech-green); text-decoration: none;" onclick="showEvents()"><i class="fas fa-calendar-alt"></i> Мероприятия</a></p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Подписка</h3>
+                <p>Будьте в курсе новых технологий и проектов:</p>
+                <input type="email" id="subscribeEmail" placeholder="Ваш email" style="width: 100%; padding: 0.8rem; margin-top: 1rem; border-radius: 5px; border: none; background: rgba(255,255,255,0.1); color: white;">
+                <select id="subscribeCategory" style="width: 100%; padding: 0.8rem; margin-top: 1rem; border-radius: 5px; border: none; background: rgba(255,255,255,0.1); color: white;">
+                    <option value="all">Все категории</option>
+                    <option value="ai">Искусственный интеллект</option>
+                    <option value="quantum">Квантовые технологии</option>
+                    <option value="energy">Зеленая энергетика</option>
+                </select>
+                <button class="action-btn" style="margin-top: 1rem; width: 100%;" onclick="subscribeNewsletter()">
+                    <i class="fas fa-paper-plane"></i> Подписаться на рассылку
+                </button>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+            <p>© 2025 Россия 2040. Все права защищены. Видение технологического будущего.</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.6);">
+                Этот проект создан для демонстрации технологического потенциала России. Все данные основаны на реальных исследованиях и прогнозах.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Данные для хабов
+        const hubsData = {
+            ai: {
+                title: "Москва - Столица Искусственного Интеллекта",
+                subtitle: "Мировой центр разработки ИИ",
+                icon: "fas fa-brain",
+                color: "#0066ff",
+                description: "Москва станет мировым лидером в разработке искусственного интеллекта. Здесь создаются системы, которые изменят медицину, образование, транспорт и управление городами. К 2040 году здесь будет сосредоточено 40% всех ИИ-разработок страны.",
+                stats: [
+                    { value: "$150 млрд", label: "Вклад в ВВП к 2035" },
+                    { value: "500K", label: "Специалистов ИИ" },
+                    { value: "100+", label: "Исследовательских центров" },
+                    { value: "95%", label: "Автоматизация госуслуг" }
+                ],
+                projects: [
+                    {
+                        title: "Цифровой двойник России",
+                        description: "Полная цифровая копия страны для моделирования и прогнозирования"
+                    },
+                    {
+                        title: "ИИ-Доктор",
+                        description: "Система диагностики с точностью 99.8%"
+                    },
+                    {
+                        title: "Когнитивный помощник",
+                        description: "Персональный ИИ для каждого гражданина"
+                    },
+                    {
+                        title: "ИИ-Транспорт",
+                        description: "Полностью автономная транспортная система"
+                    }
+                ]
+            },
+            quantum: {
+                title: "Новосибирск - Квантовый хаб",
+                subtitle: "Центр квантовых вычислений",
+                icon: "fas fa-atom",
+                color: "#9d4edd",
+                description: "Квантовые компьютеры решают задачи, непосильные классическим суперкомпьютерам. Здесь разрабатываются квантовые процессоры и создается квантовый интернет. Научный центр мирового уровня с уникальными разработками.",
+                stats: [
+                    { value: "1000+", label: "Кубитов к 2030" },
+                    { value: "$50 млрд", label: "Объем рынка к 2040" },
+                    { value: "99.9%", label: "Точность симуляций" },
+                    { value: "10x", label: "Ускорение вычислений" }
+                ],
+                projects: [
+                    {
+                        title: "Квантовый суперкомпьютер",
+                        description: "Процессор мощностью 1000+ кубитов"
+                    },
+                    {
+                        title: "Квантовый интернет",
+                        description: "Защищенные коммуникации между городами"
+                    },
+                    {
+                        title: "Квантовая криптография",
+                        description: "Невзламываемые системы шифрования"
+                    },
+                    {
+                        title: "Симуляция молекул",
+                        description: "Разработка новых лекарств и материалов"
+                    }
+                ]
+            },
+            space: {
+                title: "Владивосток - Космические ворота",
+                subtitle: "Центр космических технологий",
+                icon: "fas fa-rocket",
+                color: "#ff3366",
+                description: "Новые космодромы, производство космических аппаратов, центр космического туризма и добычи ресурсов на астероидах. Уникальное географическое положение позволяет оптимально запускать космические аппараты.",
+                stats: [
+                    { value: "$100 млрд", label: "Космическая экономика" },
+                    { value: "10K", label: "Космических туристов в год" },
+                    { value: "50+", label: "Запусков в год" },
+                    { value: "2035", label: "Миссия на Марс" }
+                ],
+                projects: [
+                    {
+                        title: "Лунная база 'Селена'",
+                        description: "Первая в мире постоянная лунная база"
+                    },
+                    {
+                        title: "Марсианская миссия",
+                        description: "Пилотируемый полет на Марс"
+                    },
+                    {
+                        title: "Космический туризм",
+                        description: "Орбитальные отели и суборбитальные полеты"
+                    },
+                    {
+                        title: "Добыча астероидов",
+                        description: "Добыча редких металлов в космосе"
+                    }
+                ]
+            },
+            energy: {
+                title: "Мурманск - Зеленая энергия",
+                subtitle: "Центр возобновляемой энергетики",
+                icon: "fas fa-solar-panel",
+                color: "#00f7ff",
+                description: "Плавучие ветряные электростанции, подводные энергохранилища, производство зеленого водорода и управление арктической энергосетью. Уникальные условия для ветроэнергетики и приливных электростанций.",
+                stats: [
+                    { value: "85%", label: "Зеленой энергии к 2040" },
+                    { value: "10 ГВт", label: "Мощность ветропарков" },
+                    { value: "-60%", label: "Выбросы CO₂ к 2040" },
+                    { value: "100%", label: "Автономность" }
+                ],
+                projects: [
+                    {
+                        title: "Арктические ветропарки",
+                        description: "Крупнейшие в мире плавучие ветроэлектростанции"
+                    },
+                    {
+                        title: "Зеленый водород",
+                        description: "Производство экологичного топлива"
+                    },
+                    {
+                        title: "Подводные хранилища",
+                        description: "Энергохранилища на морском дне"
+                    },
+                    {
+                        title: "Умная энергосеть",
+                        description: "Интеллектуальное распределение энергии"
+                    }
+                ]
+            },
+            bio: {
+                title: "Екатеринбург - Биотехнологический кластер",
+                subtitle: "Центр биотехнологий и медицины",
+                icon: "fas fa-dna",
+                color: "#00ffaa",
+                description: "Центр генной инженерии, персонализированной медицины, разработки бионических протезов и искусственных органов. Уникальная экосистема для биотехнологических стартапов и исследований.",
+                stats: [
+                    { value: "100+", label: "Лет здоровой жизни" },
+                    { value: "-80%", label: "Смертность от рака" },
+                    { value: "99%", label: "Точность диагностики" },
+                    { value: "24ч", label: "Создание органов" }
+                ],
+                projects: [
+                    {
+                        title: "Геном России",
+                        description: "Секвенирование геномов всех граждан"
+                    },
+                    {
+                        title: "Бионические протезы",
+                        description: "Нейроуправляемые искусственные конечности"
+                    },
+                    {
+                        title: "Искусственные органы",
+                        description: "Биопечать органов по требованию"
+                    },
+                    {
+                        title: "Персонализированная медицина",
+                        description: "Лечение на основе генетического профиля"
+                    }
+                ]
+            },
+            neuro: {
+                title: "Санкт-Петербург - Нейротехнологии",
+                subtitle: "Центр интерфейсов мозг-компьютер",
+                icon: "fas fa-mind",
+                color: "#ffd700",
+                description: "Разработка нейроинтерфейсов для лечения заболеваний, ускоренного обучения и расширения возможностей человека. Ведущий мировой центр нейронаук и когнитивных исследований.",
+                stats: [
+                    { value: "1M", label: "Нейроимплантов к 2040" },
+                    { value: "10x", label: "Скорость обучения" },
+                    { value: "99%", label: "Точность управления" },
+                    { value: "2035", label: "Цифровое сознание" }
+                ],
+                projects: [
+                    {
+                        title: "Нейроинтерфейсы",
+                        description: "Прямое управление устройствами силой мысли"
+                    },
+                    {
+                        title: "Прямая загрузка знаний",
+                        description: "Ускоренное обучение через нейроинтерфейсы"
+                    },
+                    {
+                        title: "Коллективное мышление",
+                        description: "Совместное решение задач через нейросети"
+                    },
+                    {
+                        title: "Цифровое бессмертие",
+                        description: "Сохранение сознания в цифровой форме"
+                    }
+                ]
+            }
+        };
+
+        // Инициализация при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            initMap();
+            initCards(); // Инициализация карточек технологий
+            setupConnections();
+            createTimeline();
+        });
+
+        // Создание частиц для фона
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: absolute;
+                    width: ${Math.random() * 3 + 1}px;
+                    height: ${Math.random() * 3 + 1}px;
+                    background: ${Math.random() > 0.5 ? 'var(--tech-green)' : 'var(--primary-blue)'};
+                    border-radius: 50%;
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                    animation: particleMove ${Math.random() * 20 + 10}s linear infinite;
+                    animation-delay: ${Math.random() * 5}s;
+                    opacity: ${Math.random() * 0.3 + 0.1};
+                `;
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Мобильное меню
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Плавная прокрутка
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Инициализация карты - ФИНАЛЬНАЯ ВЕРСИЯ
+        function initMap() {
+            const hubs = document.querySelectorAll('.tech-hub');
+            const infoPanel = document.getElementById('regionInfo');
+            
+            hubs.forEach(hub => {
+                hub.addEventListener('click', function(e) {
+                    e.stopPropagation(); // Останавливаем всплытие события
+                    
+                    const hubType = this.getAttribute('data-hub');
+                    openHubFullscreen(hubType);
+                });
+            });
+
+            // Клик по карте закрывает панель
+            document.getElementById('futureMap').addEventListener('click', function(e) {
+                if (!e.target.closest('.tech-hub') && !e.target.closest('.region-info-panel')) {
+                    closeInfoPanel();
+                }
+            });
+        }
+
+        // Открыть полноэкранную панель хаба
+        function openHubFullscreen(hubType) {
+            const hubData = hubsData[hubType];
+            if (!hubData) return;
+            
+            const fullscreen = document.getElementById('hubFullscreen');
+            const content = document.getElementById('hubFullscreenContent');
+            
+            // Устанавливаем цвет границы
+            content.style.borderColor = hubData.color;
+            
+            // Заполняем заголовок
+            document.getElementById('hubFullscreenIcon').className = `hub-fullscreen-icon ${hubData.icon}`;
+            document.getElementById('hubFullscreenIcon').style.color = hubData.color;
+            document.getElementById('hubFullscreenTitle').textContent = hubData.title;
+            document.getElementById('hubFullscreenTitle').style.color = hubData.color;
+            document.getElementById('hubFullscreenSubtitle').textContent = hubData.subtitle;
+            
+            // Заполняем описание
+            document.getElementById('hubFullscreenDescription').innerHTML = `
+                <p style="font-size: 1.2rem; line-height: 1.6; margin-bottom: 2rem;">${hubData.description}</p>
+            `;
+            
+            // Заполняем статистику
+            const statsContainer = document.getElementById('hubFullscreenStats');
+            statsContainer.innerHTML = '';
+            hubData.stats.forEach(stat => {
+                statsContainer.innerHTML += `
+                    <div class="hub-stat">
+                        <div class="hub-stat-value" style="color: ${hubData.color}">${stat.value}</div>
+                        <div class="hub-stat-label">${stat.label}</div>
+                    </div>
+                `;
+            });
+            
+            // Заполняем проекты
+            const projectsContainer = document.getElementById('hubProjectsGrid');
+            projectsContainer.innerHTML = '';
+            hubData.projects.forEach(project => {
+                projectsContainer.innerHTML += `
+                    <div class="hub-project-item">
+                        <h4 class="hub-project-title">${project.title}</h4>
+                        <p>${project.description}</p>
+                    </div>
+                `;
+            });
+            
+            // Показываем панель
+            fullscreen.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Закрыть полноэкранную панель хаба
+        function closeHubFullscreen() {
+            document.getElementById('hubFullscreen').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Показать информацию о хабе (для маленькой панели)
+        function showHubInfo(hubType) {
+            const hubData = hubsData[hubType];
+            if (!hubData) return;
+            
+            document.getElementById('infoIcon').className = `info-icon ${hubData.icon}`;
+            document.getElementById('infoIcon').style.color = hubData.color;
+            document.getElementById('infoTitle').textContent = hubData.title;
+            document.getElementById('infoSubtitle').textContent = hubData.subtitle;
+            document.getElementById('infoTitle').style.color = hubData.color;
+            document.getElementById('infoDescription').innerHTML = `<p>${hubData.description}</p>`;
+            
+            // Заполнить статистику
+            const statsContainer = document.getElementById('infoStats');
+            statsContainer.innerHTML = '';
+            hubData.stats.forEach(stat => {
+                statsContainer.innerHTML += `
+                    <div class="info-stat">
+                        <div class="info-value">${stat.value}</div>
+                        <div class="info-label">${stat.label}</div>
+                    </div>
+                `;
+            });
+            
+            // Заполнить проекты
+            const projectsContainer = document.getElementById('projectTags');
+            projectsContainer.innerHTML = '';
+            hubData.projects.forEach(project => {
+                projectsContainer.innerHTML += `
+                    <span class="project-tag">${project.title}</span>
+                `;
+            });
+        }
+
+        // Закрыть панель информации
+        function closeInfoPanel() {
+            document.getElementById('regionInfo').style.display = 'none';
+            
+            // Сбросить подсветку хабов
+            document.querySelectorAll('.tech-hub').forEach(hub => {
+                hub.style.opacity = '1';
+                hub.style.zIndex = '10';
+                hub.style.animation = 'hubPulse 3s infinite';
+            });
+        }
+
+        // Настройка соединений между хабами
+        function setupConnections() {
+            const lines = [
+                { id: 'line1', from: '.hub-ai', to: '.hub-quantum' },
+                { id: 'line2', from: '.hub-ai', to: '.hub-neuro' },
+                { id: 'line3', from: '.hub-quantum', to: '.hub-bio' },
+                { id: 'line4', from: '.hub-space', to: '.hub-energy' },
+                { id: 'line5', from: '.hub-bio', to: '.hub-neuro' }
+            ];
+            
+            lines.forEach(line => {
+                const fromEl = document.querySelector(line.from);
+                const toEl = document.querySelector(line.to);
+                const lineEl = document.getElementById(line.id);
+                
+                if (fromEl && toEl && lineEl) {
+                    const fromRect = fromEl.getBoundingClientRect();
+                    const toRect = toEl.getBoundingClientRect();
+                    const mapRect = document.getElementById('futureMap').getBoundingClientRect();
+                    
+                    const x1 = fromRect.left + fromRect.width/2 - mapRect.left;
+                    const y1 = fromRect.top + fromRect.height/2 - mapRect.top;
+                    const x2 = toRect.left + toRect.width/2 - mapRect.left;
+                    const y2 = toRect.top + toRect.height/2 - mapRect.top;
+                    
+                    const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+                    const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+                    
+                    lineEl.style.width = `${length}px`;
+                    lineEl.style.left = `${x1}px`;
+                    lineEl.style.top = `${y1}px`;
+                    lineEl.style.transform = `rotate(${angle}deg)`;
+                }
+            });
+        }
+
+        // Создание таймлайна
+        function createTimeline() {
+            const years = document.querySelectorAll('.timeline-year');
+            years.forEach(year => {
+                year.addEventListener('click', function() {
+                    years.forEach(y => y.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const selectedYear = this.getAttribute('data-year');
+                    updateMapForYear(selectedYear);
+                });
+            });
+        }
+
+        // Обновить карту для выбранного года
+        function updateMapForYear(year) {
+            const hubs = document.querySelectorAll('.tech-hub');
+            const opacityMap = {
+                '2025': 0.3,
+                '2030': 0.6,
+                '2035': 0.8,
+                '2040': 1
+            };
+            
+            hubs.forEach(hub => {
+                hub.style.opacity = opacityMap[year] || 1;
+                hub.style.animationDuration = `${4 - (parseInt(year) - 2025) / 5}s`;
+            });
+            
+            // Анимировать переход
+            document.querySelectorAll('.connection-line').forEach(line => {
+                line.style.animationDuration = `${3 - (parseInt(year) - 2025) / 5}s`;
+            });
+        }
+
+        // Управление картой
+        let currentZoom = 1;
+        
+        function zoomIn() {
+            if (currentZoom < 2) {
+                currentZoom += 0.2;
+                updateZoom();
+            }
+        }
+        
+        function zoomOut() {
+            if (currentZoom > 0.5) {
+                currentZoom -= 0.2;
+                updateZoom();
+            }
+        }
+        
+        function resetView() {
+            currentZoom = 1;
+            updateZoom();
+            closeInfoPanel();
+        }
+        
+        function updateZoom() {
+            const hubs = document.querySelectorAll('.tech-hub');
+            hubs.forEach(hub => {
+                hub.style.transform = `scale(${1/currentZoom})`;
+            });
+        }
+        
+        function toggleConnections() {
+            const lines = document.querySelectorAll('.connection-line');
+            const nodes = document.querySelectorAll('.connection-node');
+            
+            lines.forEach(line => {
+                line.style.display = line.style.display === 'none' ? 'block' : 'none';
+            });
+            
+            nodes.forEach(node => {
+                node.style.display = node.style.display === 'none' ? 'block' : 'none';
+            });
+        }
+        
+        function showAllHubs() {
+            document.querySelectorAll('.tech-hub').forEach(hub => {
+                hub.style.animation = 'hubPulse 0.5s 3';
+            });
+            
+            setTimeout(() => {
+                document.querySelectorAll('.tech-hub').forEach(hub => {
+                    hub.style.animation = 'hubPulse 3s infinite';
+                });
+            }, 1500);
+        }
+        
+        function animateConnections() {
+            const lines = document.querySelectorAll('.connection-line');
+            lines.forEach(line => {
+                line.style.animation = 'lineFlow 2s linear infinite';
+            });
+            
+            setTimeout(() => {
+                lines.forEach(line => {
+                    line.style.animation = 'lineFlow 4s linear infinite';
+                });
+            }, 2000);
+        }
+        
+        function downloadMap() {
+            alert('Карта будущего России 2040 будет сохранена в высоком разрешении. В реальном проекте здесь будет функция скачивания.');
+        }
+
+        // ИНИЦИАЛИЗАЦИЯ КАРТОЧЕК ТЕХНОЛОГИЙ
+        function initCards() {
+            const cards = document.querySelectorAll('.tech-card');
+            cards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    // Не обрабатываем клик, если нажали на кнопку внутри карточки
+                    if (e.target.closest('button')) return;
+                    
+                    const isActive = this.classList.contains('active');
+                    
+                    // Закрываем все другие карточки
+                    cards.forEach(c => {
+                        if (c !== this) {
+                            c.classList.remove('active');
+                        }
+                    });
+                    
+                    // Открываем текущую карточку, если она была закрыта
+                    if (!isActive) {
+                        this.classList.add('active');
+                        // Прокручиваем к карточке, если она не полностью видна
+                        const rect = this.getBoundingClientRect();
+                        if (rect.top < 100 || rect.bottom > window.innerHeight - 100) {
+                            this.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }
+                    }
+                });
+            });
+        }
+
+        function toggleTechCard(card) {
+            const isActive = card.classList.contains('active');
+            document.querySelectorAll('.tech-card').forEach(c => c.classList.remove('active'));
+            if (!isActive) {
+                card.classList.add('active');
+            }
+        }
+
+        // Фильтрация проектов
+        function filterProjects(filter) {
+            const projects = document.querySelectorAll('.project-item');
+            projects.forEach(project => {
+                const status = project.querySelector('.project-status').textContent.toLowerCase();
+                
+                switch(filter) {
+                    case 'all':
+                        project.style.display = 'block';
+                        break;
+                    case 'active':
+                        project.style.display = status.includes('запущено') || status.includes('строительство') ? 'block' : 'none';
+                        break;
+                    case 'future':
+                        project.style.display = status.includes('разработке') || status.includes('исследования') ? 'block' : 'none';
+                        break;
+                }
+            });
+        }
+
+        function showAllProjects() {
+            const projects = document.querySelectorAll('.project-item');
+            projects.forEach(project => {
+                project.style.display = 'block';
+            });
+        }
+
+        // Отправка идеи
+        function submitIdea() {
+            const name = document.getElementById('userName').value;
+            const email = document.getElementById('userEmail').value;
+            const profession = document.getElementById('userProfession').value;
+            const title = document.getElementById('ideaTitle').value;
+            const description = document.getElementById('ideaDescription').value;
+            const category = document.getElementById('ideaCategory').value;
+
+            if (!name || !email || !title || !description || !category) {
+                alert('Пожалуйста, заполните все обязательные поля!');
+                return;
+            }
+
+            // Здесь будет отправка на сервер
+            alert(`Спасибо, ${name}! Ваша идея "${title}" отправлена на рассмотрение. Вы получите ответ на email ${email} в течение 5 рабочих дней.`);
+            
+            // Очистка формы
+            document.getElementById('userName').value = '';
+            document.getElementById('userEmail').value = '';
+            document.getElementById('userProfession').value = '';
+            document.getElementById('ideaTitle').value = '';
+            document.getElementById('ideaDescription').value = '';
+            document.getElementById('ideaCategory').value = '';
+        }
+
+        // Демо-функции
+        function showDemo() {
+            alert('Запускается 3D демо технологий будущего России... В реальном проекте здесь будет интерактивная 3D визуализация всех технологических направлений.');
+        }
+
+        function showAIDemo() {
+            alert('Демо ИИ-помощника запущено:\n\n"Привет! Я ваш персональный ИИ-ассистент. Я помогу вам:\n1. Найти информацию о технологиях будущего\n2. Записаться на экскурсию в технопарк\n3. Получить консультацию по инновационным проектам\n4. Найти партнеров для реализации идей"\n\nЗадайте мне любой вопрос!');
+        }
+
+        function showEnergyCalculator() {
+            const energy = prompt('Введите потребление энергии в кВт/ч в месяц:');
+            if (energy) {
+                const solar = (energy / 30 / 5).toFixed(2); // 5 часов солнца в день
+                const wind = (energy / 30 / 24 / 0.4).toFixed(2); // 40% КИУМ
+                alert(`Для покрытия ${energy} кВт/ч вам потребуется:\n\n• Солнечные панели: ${solar} кВт\n• Ветряная турбина: ${wind} кВт\n• Годовые инвестиции: ${(energy * 0.15 * 12).toFixed(0)} руб.\n• Окупаемость: 7-10 лет`);
+            }
+        }
+
+        function showCityDemo() {
+            alert('Запускается виртуальный тур по умному городу 2040...\n\nВы увидите:\n• Автономный транспорт\n• Умные здания\n• Роботизированную инфраструктуру\n• Зеленые технологии');
+        }
+
+        function showMedDemo() {
+            alert('Демо медицинской диагностики:\n\n"Анализ ваших биометрических данных...\n\nРезультаты:\n• Генетический риск: низкий\n• Рекомендации по питанию: персонализированы\n• Профилактические меры: активированы\n• Мониторинг здоровья: 24/7"\n\nВаше здоровье под контролем ИИ!');
+        }
+
+        function showEduDemo() {
+            alert('VR урок по квантовой физике запущен...\n\nВы погружаетесь в мир:\n• Квантовых частиц\n• Суперпозиции состояний\n• Квантовой запутанности\n• Практических экспериментов\n\nОбучение через погружение ускоряет усвоение материала в 3 раза!');
+        }
+
+        // Социальные функции
+        function shareSite() {
+            const url = window.location.href;
+            const text = 'Посмотрите наше видение технологического будущего России 2040!';
+            navigator.clipboard.writeText(`${text}\n${url}`).then(() => {
+                alert('Ссылка скопирована в буфер обмена! Поделитесь с друзьями и коллегами.');
+            });
+        }
+
+        function shareTelegram() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent('Технологическое будущее России 2040 - стань частью изменений!');
+            window.open(``, '_blank');
+        }
+
+        function shareVK() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(``, '_blank');
+        }
+
+        function shareYouTube() {
+            window.open('', '_blank');
+        }
+
+        function shareGitHub() {
+            window.open('', '_blank');
+        }
+
+        // Дополнительные функции
+        function downloadPresentation() {
+            alert('Презентация "Россия 2040: Технологическое будущее" \nФормат: PDF, 10 страниц\nРазмер: 1,09 МБ\nhttps://ru.files.me/u/4n6je744dc');
+        }
+
+        function showResearch() {
+            alert('Открывается библиотека исследований:\n\n• Национальная технологическая инициатива\n• Дорожные карты развития технологий\n• Аналитические отчеты\n• Научные публикации\n• Патентная база');
+        }
+
+        function showPartners() {
+            alert('Партнеры проекта "Россия 2040":\n\n• Сколково\n• Росатом\n• Роскосмос\n• Роснано\n• ВЭБ.РФ\n• Крупнейшие университеты\n• Технологические компании\n• ОАО "РЖД"');
+        }
+
+        function showNews() {
+            alert('Новости технологий:\n\n• Запущен новый квантовый процессор\n• Открыта первая плавучая ветроэлектростанция\n• ИИ диагностирует рак с точностью 99.9%\n• Российские ученые создали новый сверхпроводник\n• Запущен спутник для мониторинга климата');
+        }
+
+        function showEvents() {
+            alert('Ближайшие мероприятия:\n\n• Не заплонированы');
+        }
+
+        function subscribeNewsletter() {
+            const email = document.getElementById('subscribeEmail').value;
+            const category = document.getElementById('subscribeCategory').value;
+            
+            if (email && email.includes('@')) {
+                alert(`Спасибо за подписку, ${email}!\nВы будете получать новости по категории: ${document.getElementById('subscribeCategory').options[document.getElementById('subscribeCategory').selectedIndex].text}`);
+                document.getElementById('subscribeEmail').value = '';
+            } else {
+                alert('Пожалуйста, введите корректный email!');
+            }
+        }
+
+        // Параллакс эффект
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const bgGrid = document.querySelector('.bg-grid');
+            if (bgGrid) {
+                bgGrid.style.transform = `rotateX(60deg) translateY(${scrolled * 0.1}px)`;
+            }
+        });
+
+        // Анимация при скролле
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Наблюдаем за элементами
+        document.querySelectorAll('.tech-card, .project-item, .section-title, .image-card, .feature-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(el);
+        });
+
+        // Адаптация соединений при изменении размера окна
+        window.addEventListener('resize', setupConnections);
+    </script>
+</body>
+</html>
